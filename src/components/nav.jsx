@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./components.css";
 
 class Nav extends Component {
@@ -16,14 +16,14 @@ class Nav extends Component {
               />
             </div>
             <div className="col-4 text-center">
-              <Link to="/" className="blog-header-logo text-dark" href="/">
+              <NavLink to="/" className="blog-header-logo text-dark">
                 Trinidad Bible Reading Relay
-              </Link>
+              </NavLink>
             </div>
             <div className="col-4 d-flex justify-content-end align-items-center">
-              <span className="btn btn-sm btn-outline-danger" href="/">
+              <NavLink to="hello" className="btn btn-sm btn-outline-danger">
                 LIVE
-              </span>
+              </NavLink>
             </div>
           </div>
         </header>
