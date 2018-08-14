@@ -5,7 +5,16 @@ import YouTube from "react-youtube";
 class Player extends Component {
   render() {
     const linkID = this.props.match.params.id;
-    const streamID = ["default", "2g811Eo7K8U", "91F8reC8kvo", "5pt_igBTCsI"];
+    const streamID = [
+      "default",
+      "Ih5s8d5y0eA",
+      "zZiaZbRVREk",
+      "jUdAhCbzqx8",
+      "gW_WJLkTxUs",
+      "hZFxBbndcN8",
+      "IRm0CZuLmkU",
+      "inJKuOeAImE"
+    ];
     // if (linkID === 1) {
     //   const streamID = "2g811Eo7K8U";
     // }
