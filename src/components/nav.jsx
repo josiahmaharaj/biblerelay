@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import "./components.css";
 
 class Nav extends Component {
@@ -15,14 +16,14 @@ class Nav extends Component {
               />
             </div>
             <div className="col-4 text-center">
-              <a className="blog-header-logo text-dark" href="/">
+              <NavLink to="/" className="blog-header-logo text-dark">
                 Trinidad Bible Reading Relay
-              </a>
+              </NavLink>
             </div>
             <div className="col-4 d-flex justify-content-end align-items-center">
-              <a className="btn btn-sm btn-outline-secondary" href="/">
-                Sign up
-              </a>
+              <NavLink to="hello" className="btn btn-sm btn-outline-danger">
+                LIVE
+              </NavLink>
             </div>
           </div>
         </header>
