@@ -25,7 +25,7 @@ class Player extends Component {
             ? doc.get("description")
             : console.log("No such document!");
           const fs_books = doc.exists
-            ? console.log(doc.get("books"))
+            ? doc.get("books")
             : console.log("Problems");
           this.setState({
             title: fs_title,
@@ -85,6 +85,18 @@ class Player extends Component {
           <h3>Description</h3>
           <br />
           {this.state.description}
+          <br />
+          <br />
+          <h3>Books Read</h3>
+          {this.state.books.map(book => {
+            return (
+              <div key={book.name}>
+                <ul>
+                  <li>{book}</li>
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

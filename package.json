@@ -7,18 +7,21 @@
     "firebase": "^5.3.1",
     "jquery": "^3.3.1",
     "normalize.css": "^8.0.0",
+    "now": "^11.3.10",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-share": "^2.2.0",
-    "react-youtube": "^7.6.0"
+    "react-youtube": "^7.6.0",
+    "serve": "^9.6.0"
   },
   "devDependencies": {
     "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "now-start": "serve --single ./build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

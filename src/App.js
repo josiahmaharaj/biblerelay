@@ -14,6 +14,7 @@ import Footer from "./components/footer";
 class App extends Component {
   componentDidMount() {
     AOS.init({
+      once: true,
       duration: 2000
     });
   }

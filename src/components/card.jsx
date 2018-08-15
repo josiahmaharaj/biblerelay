@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class Card extends Component {
   render() {
     const Background = this.props.bkImg;
-    console.log(Background);
     const imageBackground = {
       color: "white",
       backgroundImage: "url(" + Background + ")",
