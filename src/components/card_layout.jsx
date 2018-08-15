@@ -8,7 +8,7 @@ class Card_Layout extends Component {
       <div className="container">
         <div className="row">
           {/* DAY 1 */}
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-down-right">
             <NavLink to="/watch/1">
               <Card
                 day="Day 1"
@@ -17,7 +17,7 @@ class Card_Layout extends Component {
             </NavLink>
           </div>
           {/* DAY 2 */}
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-down">
             <NavLink to="watch/2">
               <Card
                 day="Day 2"
@@ -26,7 +26,7 @@ class Card_Layout extends Component {
             </NavLink>
           </div>
           {/* DAY 3 */}
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-down-left">
             <NavLink to="watch/3">
               <Card
                 day="Day 3"
@@ -37,7 +37,7 @@ class Card_Layout extends Component {
         </div>
         {/* DAY 4 */}
         <div className="row">
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-right">
             <NavLink to="watch/4">
               <Card
                 day="Day 4"
@@ -46,7 +46,7 @@ class Card_Layout extends Component {
             </NavLink>
           </div>
           {/* DAY 5 */}
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-up">
             <NavLink to="watch/5">
               <Card
                 day="Day 5"
@@ -55,7 +55,7 @@ class Card_Layout extends Component {
             </NavLink>
           </div>
           {/* DAY 6 */}
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-left">
             <NavLink to="watch/6">
               <Card
                 day="Day 6"
@@ -66,7 +66,7 @@ class Card_Layout extends Component {
         </div>
         <div className="row">
           {/* DAY 7 */}
-          <div className="col-12 col-sm-4 mt-4">
+          <div className="col-12 col-sm-4 mt-4" data-aos="fade-up-right">
             <NavLink to="watch/7">
               <Card
                 day="Day 7"
@@ -75,7 +75,6 @@ class Card_Layout extends Component {
             </NavLink>
           </div>
         </div>
-        <hr />
       </div>
     );
   }

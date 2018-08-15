@@ -31,6 +31,9 @@ class Nav extends Component {
           A True Worshippers Evangelistic Centre and Tzion Gate Life Centre
           Ministry collaboration
         </h5>
+        <p className="quote">
+          Join us as we read the Bible from Genesis to Revelation in 7 days
+        </p>
       </div>
     );
   }

@@ -12,7 +12,7 @@ class Card extends Component {
       msTransition: "all" // 'ms' is the only lowercase vendor prefix
     };
     return (
-      <div className="card mx-auto" style={{ width: "300px", height: "180px" }}>
+      <div className="card mx-auto">
         <div className="card-body" style={imageBackground} />
       </div>
     );

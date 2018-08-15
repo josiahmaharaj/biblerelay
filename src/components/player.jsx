@@ -19,11 +19,11 @@ class Player extends Component {
     //   const streamID = "2g811Eo7K8U";
     // }
     const opts = {
-      height: "390",
-      width: "640",
+      height: "290",
+      width: "540",
       playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        controls: 1,
+        autoplay: 1,
+        controls: 0,
         modestbranding: 1,
         rel: 0
       }
@@ -35,9 +35,12 @@ class Player extends Component {
             <button className="btn btn-sm btn-outline-primary">Back</button>
           </NavLink>
         </div>
-        <h1>Player {this.props.match.params.id}</h1>
+        <h1>Day {this.props.match.params.id}</h1>
         <div className="row mb-5">
-          <div class="embed-responsive embed-responsive-16by9">
+          <div
+            className="embed-responsive embed-responsive-16by9"
+            data-aos="flip-left"
+          >
             <YouTube videoId={streamID[linkID]} opts={opts} />
           </div>
         </div>
