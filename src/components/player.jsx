@@ -1,9 +1,46 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import YouTube from "react-youtube";
+import firebase from "./firestore";
 
 class Player extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { title: "Day", theme: "", description: "", books: [] };
+  }
+  componentDidMount() {
+    const db = firebase.firestore();
+    const docRef = db.collection("day").doc(this.props.match.params.id);
+    docRef
+      .get()
+      .then(
+        function(doc) {
+          const fs_title = doc.exists
+            ? doc.get("title")
+            : console.log("No such document!");
+          const fs_theme = doc.exists
+            ? doc.get("theme")
+            : console.log("No such document!");
+          const fs_description = doc.exists
+            ? doc.get("description")
+            : console.log("No such document!");
+          const fs_books = doc.exists
+            ? console.log(doc.get("books"))
+            : console.log("Problems");
+          this.setState({
+            title: fs_title,
+            theme: fs_theme,
+            description: fs_description,
+            books: fs_books
+          });
+        }.bind(this)
+      )
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+  }
   render() {
+    // YOUTUBE
     const linkID = this.props.match.params.id;
     const streamID = [
       "default",
@@ -15,9 +52,6 @@ class Player extends Component {
       "IRm0CZuLmkU",
       "inJKuOeAImE"
     ];
-    // if (linkID === 1) {
-    //   const streamID = "2g811Eo7K8U";
-    // }
     const opts = {
       height: "290",
       width: "540",
@@ -28,6 +62,7 @@ class Player extends Component {
         rel: 0
       }
     };
+    // FIRESTORE
     return (
       <div className="container">
         <div className="row">
@@ -35,7 +70,9 @@ class Player extends Component {
             <button className="btn btn-sm btn-outline-primary">Back</button>
           </NavLink>
         </div>
-        <h1>Day {this.props.match.params.id}</h1>
+        <h1 data-aos="fade-up">
+          {this.state.title} | {this.state.theme}
+        </h1>
         <div className="row mb-5">
           <div
             className="embed-responsive embed-responsive-16by9"
@@ -43,6 +80,11 @@ class Player extends Component {
           >
             <YouTube videoId={streamID[linkID]} opts={opts} />
           </div>
+        </div>
+        <div className="row jumbotron" data-aos="fade-up">
+          <h3>Description</h3>
+          <br />
+          {this.state.description}
         </div>
       </div>
     );
