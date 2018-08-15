@@ -25,7 +25,7 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/" component={Card_Layout} />
-            <Route exact path="/watch/:id" component={Player} />
+            <Route path="/watch/:id" component={Player} />
             <Route component={ErrorPage} />
           </Switch>
           <Footer />
