@@ -70,9 +70,11 @@ class Player extends Component {
             <button className="btn btn-sm btn-outline-primary">Back</button>
           </NavLink>
         </div>
-        <h1 data-aos="fade-up">
-          {this.state.title} | {this.state.theme}
-        </h1>
+        <div className="row">
+          <h1 data-aos="fade-up">
+            {this.state.title} | {this.state.theme}
+          </h1>
+        </div>
         <div className="row mb-5">
           <div
             className="embed-responsive embed-responsive-16by9"

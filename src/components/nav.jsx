@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import "./components.css";
 
 class Nav extends Component {
@@ -31,7 +33,9 @@ class Nav extends Component {
                   aria-expanded="false"
                   aria-label="Toggle navigation"
                 >
-                  <span className="navbar-toggler-icon" />
+                  <span>
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  </span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                   <ul className="navbar-nav">
@@ -48,6 +52,11 @@ class Nav extends Component {
                     <li className="nav-item">
                       <NavLink to="/contact" className="nav-link">
                         Contact
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/admin" className="nav-link">
+                        Login
                       </NavLink>
                     </li>
                   </ul>
