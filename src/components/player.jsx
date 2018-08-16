@@ -90,7 +90,7 @@ class Player extends Component {
           <h3>Books Read</h3>
           {this.state.books.map(book => {
             return (
-              <div key={book.name}>
+              <div key={book.name} className="pt-1">
                 <ul>
                   <li>{book}</li>
                 </ul>

@@ -10,6 +10,8 @@ import Card_Layout from "./components/card_layout";
 import Player from "./components/player";
 import ErrorPage from "./components/error_page";
 import Footer from "./components/footer";
+import About from "./components/about";
+import Contact from "./components/contact";
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +28,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Card_Layout} />
             <Route path="/watch/:id" component={Player} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
             <Route component={ErrorPage} />
           </Switch>
           <Footer />
