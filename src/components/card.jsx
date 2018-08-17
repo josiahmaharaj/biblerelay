@@ -13,6 +13,11 @@ class Card extends Component {
     return (
       <div className="card mx-auto">
         <div className="card-body" style={imageBackground} />
+        <p className="card-text">
+          {this.props.date}{" "}
+          <span className="badge badge-danger">{this.props.live}</span>
+          {this.props.children}
+        </p>
       </div>
     );
   }

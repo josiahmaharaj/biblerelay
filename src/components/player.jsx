@@ -6,9 +6,14 @@ import firebase from "./firestore";
 class Player extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "Day", theme: "", description: "", books: [] };
+    this.state = {
+      title: "Day",
+      theme: "",
+      description: "",
+      books: []
+    };
   }
-  componentDidMount() {
+  componentWillMount() {
     const db = firebase.firestore();
     const docRef = db.collection("day").doc(this.props.match.params.id);
     docRef

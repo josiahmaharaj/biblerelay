@@ -28,6 +28,13 @@ a {
 .card {
   width: 300px;
   height: 180px;
+  border: 1px solid #ffffff;
+}
+
+.card-text {
+  color: #000000;
+  text-decoration: none;
+  padding: 5px;
 }
 
 /* FOOTER */

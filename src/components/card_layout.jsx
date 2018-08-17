@@ -1,9 +1,42 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Card from "./card";
+import firebase from "firebase";
 
 class Card_Layout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      day: []
+    };
+  }
+  componentWillMount() {
+    const db = firebase.firestore();
+    const docRef = db.collection("day").doc("liveStatus");
+    docRef
+      .get()
+      .then(
+        function(doc) {
+          const fs_liveStatus = doc.exists
+            ? doc.get("live")
+            : console.log("No such document!");
+          this.setState({
+            day: fs_liveStatus
+          });
+        }.bind(this)
+      )
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+  }
   render() {
+    let liveStatus1 = this.state.day[0] ? "LIVE" : ""; // Ternary operator
+    let liveStatus2 = this.state.day[1] ? "LIVE" : ""; // Ternary operator
+    let liveStatus3 = this.state.day[2] ? "LIVE" : ""; // Ternary operator
+    let liveStatus4 = this.state.day[3] ? "LIVE" : ""; // Ternary operator
+    let liveStatus5 = this.state.day[4] ? "LIVE" : ""; // Ternary operator
+    let liveStatus6 = this.state.day[5] ? "LIVE" : ""; // Ternary operator
+    let liveStatus7 = this.state.day[6] ? "LIVE" : ""; // Ternary operator
     return (
       <div className="container">
         <div className="row">
@@ -13,6 +46,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 1"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day1_thumbnail.png"
+                date="19 Aug, 2018"
+                live={liveStatus1}
               />
             </NavLink>
           </div>
@@ -22,6 +57,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 2"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day2_thumbnail.png"
+                date="20 Aug, 2018"
+                live={liveStatus2}
               />
             </NavLink>
           </div>
@@ -31,6 +68,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 3"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day3_thumbnail.png"
+                date="21 Aug, 2018"
+                live={liveStatus3}
               />
             </NavLink>
           </div>
@@ -42,6 +81,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 4"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day4_thumbnail.png"
+                date="22 Aug, 2018"
+                live={liveStatus4}
               />
             </NavLink>
           </div>
@@ -51,6 +92,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 5"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day5_thumbnail.png"
+                date="23 Aug, 2018"
+                live={liveStatus5}
               />
             </NavLink>
           </div>
@@ -60,6 +103,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 6"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day6_thumbnail.png"
+                date="24 Aug, 2018"
+                live={liveStatus6}
               />
             </NavLink>
           </div>
@@ -71,6 +116,8 @@ class Card_Layout extends Component {
               <Card
                 day="Day 7"
                 bkImg="https://s3.amazonaws.com/twec/reading-relay/day7_thumbnail.png"
+                date="25 Aug, 2018"
+                live={liveStatus7}
               />
             </NavLink>
           </div>
