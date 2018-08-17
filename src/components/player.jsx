@@ -26,7 +26,7 @@ class Player extends Component {
             : console.log("No such document!");
           const fs_books = doc.exists
             ? doc.get("books")
-            : console.log("Problems");
+            : this.props.history.push("/");
           this.setState({
             title: fs_title,
             theme: fs_theme,
