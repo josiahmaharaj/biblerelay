@@ -6,9 +6,14 @@ import firebase from "./firestore";
 class Player extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "Day", theme: "", description: "", books: [] };
+    this.state = {
+      title: "Day",
+      theme: "",
+      description: "",
+      books: []
+    };
   }
-  componentDidMount() {
+  componentWillMount() {
     const db = firebase.firestore();
     const docRef = db.collection("day").doc(this.props.match.params.id);
     docRef
@@ -70,9 +75,11 @@ class Player extends Component {
             <button className="btn btn-sm btn-outline-primary">Back</button>
           </NavLink>
         </div>
-        <h1 data-aos="fade-up">
-          {this.state.title} | {this.state.theme}
-        </h1>
+        <div className="row">
+          <h1 data-aos="fade-up">
+            {this.state.title} | {this.state.theme}
+          </h1>
+        </div>
         <div className="row mb-5">
           <div
             className="embed-responsive embed-responsive-16by9"
@@ -90,7 +97,7 @@ class Player extends Component {
           <h3>Books Read</h3>
           {this.state.books.map(book => {
             return (
-              <div key={book.name}>
+              <div key={book.name} className="pt-1">
                 <ul>
                   <li>{book}</li>
                 </ul>

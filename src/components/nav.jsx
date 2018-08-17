@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import "./components.css";
 
 class Nav extends Component {
@@ -20,10 +22,47 @@ class Nav extends Component {
                 Trinidad Bible Reading Relay
               </NavLink>
             </div>
-            <div className="col-4 d-flex justify-content-end align-items-center">
-              <NavLink to="hello" className="btn btn-sm btn-outline-danger">
-                LIVE
-              </NavLink>
+            <div className="col-4 d-flex justify-content-around align-items-center">
+              <nav className="navbar navbar-expand-lg navbar-light">
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span>
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  </span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                  <ul className="navbar-nav">
+                    <li className="nav-item">
+                      <NavLink to="/" className="nav-link">
+                        Home
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/about" className="nav-link">
+                        About
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/contact" className="nav-link">
+                        Contact
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink to="/admin" className="nav-link">
+                        Login
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div className="btn btn-sm btn-outline-danger">LIVE</div>
             </div>
           </div>
         </header>
