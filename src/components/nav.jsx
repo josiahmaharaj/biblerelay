@@ -40,7 +40,7 @@ class Nav extends Component {
                 <div className="collapse navbar-collapse" id="navbarNav">
                   <ul className="navbar-nav">
                     <li className="nav-item">
-                      <NavLink to="/" className="nav-link">
+                      <NavLink exact to="/" className="nav-link">
                         Home
                       </NavLink>
                     </li>
@@ -62,7 +62,6 @@ class Nav extends Component {
                   </ul>
                 </div>
               </nav>
-              <div className="btn btn-sm btn-outline-danger">LIVE</div>
             </div>
           </div>
         </header>
