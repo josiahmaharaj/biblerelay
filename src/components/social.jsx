@@ -19,7 +19,7 @@ const Social = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-1">
+        <div className="col-3 col-sm-1">
           <FacebookShareButton
             children="Share"
             url={shareUrl}
@@ -32,7 +32,7 @@ const Social = () => {
             <FacebookShareCount url={shareUrl} />
           </div>
         </div>
-        <div className="col-1">
+        <div className="col-3 col-sm-1">
           <TwitterShareButton
             children="Share"
             url={shareUrl}
@@ -42,7 +42,7 @@ const Social = () => {
             <TwitterIcon size={32} round={true} />
           </TwitterShareButton>
         </div>
-        <div className="col-1">
+        <div className="col-3 col-sm-1">
           <WhatsappShareButton
             children="Share"
             url={shareUrl}
@@ -52,7 +52,7 @@ const Social = () => {
             <WhatsappIcon size={32} round={true} />
           </WhatsappShareButton>
         </div>
-        <div className="col-1">
+        <div className="col-3 col-sm-1">
           <EmailShareButton
             children="Share"
             url={shareUrl}

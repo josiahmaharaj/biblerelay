@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="container px-5">
       <h1>About</h1>
-      <p>
+      <p className="about">
         <a
           href="https://trueworshippers.org"
           target="blank"
@@ -27,7 +27,7 @@ const About = () => {
         by Chapter…Verse by Verse.
       </p>
       <br />
-      <p>
+      <p className="about">
         Come and participate in this God experience, as we read about our
         Creator, our Patriarchs and Matriarchs, Prophets and follow in the
         footsteps of our Lord and Saviour, Jesus Christ from the Gospels and the
