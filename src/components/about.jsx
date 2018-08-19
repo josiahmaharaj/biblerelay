@@ -37,11 +37,7 @@ const About = () => {
         Come and participate in this God experience, as we read about our
         Creator, our Patriarchs and Matriarchs, Prophets and follow in the
         footsteps of our Lord and Saviour, Jesus Christ from the Gospels and the
-        Epistles to the return of the Messiah. The Bible Relay will take place
-        over a 7-day period beginning on Sunday19th August and ending on
-        Saturday 25th August 2018. The event will take place at True Worshippers
-        Evangelistic Centre, #1 Mann Street, Arouca. The following is the
-        details of the Dates, Themes, and Start &amp; End Times for each day:
+        Epistles to the return of the Messiah.
       </p>
     </div>
   );

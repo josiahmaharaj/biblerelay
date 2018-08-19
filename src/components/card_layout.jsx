@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import Card from "./card";
-import firebase from "firebase";
+import firebase from "./firestore";
 
 class Card_Layout extends Component {
   constructor(props) {

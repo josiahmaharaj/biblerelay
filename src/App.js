@@ -7,6 +7,7 @@ import { css } from "react-emotion";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Helmet from "react-helmet";
+import ReactGA from "react-ga";
 
 import Nav from "./components/nav";
 import Card_Layout from "./components/card_layout";
@@ -15,6 +16,14 @@ import ErrorPage from "./components/error_page";
 import Footer from "./components/footer";
 import About from "./components/about";
 import Contact from "./components/contact";
+ReactGA.initialize("UA-96334081-2", {
+  debug: true,
+  titleCase: false,
+  gaOptions: {
+    userId: 123
+  }
+});
+ReactGA.pageview(window.location.pathname + window.location.search);
 const override = css`
   display: block;
   margin: 0 auto;
