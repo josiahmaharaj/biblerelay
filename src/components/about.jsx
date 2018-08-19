@@ -1,8 +1,14 @@
 import React from "react";
+import Helmet from "react-helmet";
 
 const About = () => {
   return (
     <div className="container px-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>About | Trinidad Bible Relay</title>
+        <link rel="canonical" href="http://relay.trueworshippers.org/about" />
+      </Helmet>
       <h1 data-aos="fade-up">About</h1>
       <p className="about" data-aos="fade-up">
         <a

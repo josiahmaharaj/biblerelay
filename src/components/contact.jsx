@@ -6,10 +6,16 @@ import {
   faGlobe
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import Helmet from "react-helmet";
 
 const Contact = () => {
   return (
     <div className="container px-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Contact | Trinidad Bible Relay</title>
+        <link rel="canonical" href="http://relay.trueworshippers.org/contact" />
+      </Helmet>
       <div className="row">
         <div className="col-12 col-sm-6">
           <h1>Contact Tzion Gate</h1>

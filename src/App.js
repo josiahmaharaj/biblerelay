@@ -6,6 +6,7 @@ import { SyncLoader } from "react-spinners";
 import { css } from "react-emotion";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import Helmet from "react-helmet";
 
 import Nav from "./components/nav";
 import Card_Layout from "./components/card_layout";
@@ -14,7 +15,6 @@ import ErrorPage from "./components/error_page";
 import Footer from "./components/footer";
 import About from "./components/about";
 import Contact from "./components/contact";
-import Admin from "./components/admin";
 const override = css`
   display: block;
   margin: 0 auto;
@@ -34,28 +34,35 @@ class App extends Component {
   }
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <Nav />
-          <div className="sweet-loading container text-center">
-            <SyncLoader
-              className={override}
-              sizeUnit={"px"}
-              size={10}
-              color={"#dc3545"}
-              loading={this.state.loading}
-            />
-          </div>
-          <Switch>
-            <Route exact path="/" component={Card_Layout} />
-            <Route path="/watch/:id" component={Player} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
-            <Route component={ErrorPage} />
-          </Switch>
-          <Footer />
-        </React.Fragment>
-      </Router>
+      <React.Fragment>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Home | Trinidad Bible Relay</title>
+          <link rel="canonical" href="http://relay.trueworshippers.org/" />
+        </Helmet>
+        <Router>
+          <React.Fragment>
+            <Nav />
+            <div className="sweet-loading container text-center">
+              <SyncLoader
+                className={override}
+                sizeUnit={"px"}
+                size={10}
+                color={"#dc3545"}
+                loading={this.state.loading}
+              />
+            </div>
+            <Switch>
+              <Route exact path="/" component={Card_Layout} />
+              <Route path="/watch/:id" component={Player} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route component={ErrorPage} />
+            </Switch>
+            <Footer />
+          </React.Fragment>
+        </Router>
+      </React.Fragment>
     );
   }
 }

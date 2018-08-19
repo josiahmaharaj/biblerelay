@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import YouTube from "react-youtube";
 import firebase from "./firestore";
 import Alert from "./alert";
+import Helmet from "react-helmet";
 
 class Player extends Component {
   constructor(props) {
@@ -84,6 +85,14 @@ class Player extends Component {
 
     return (
       <div className="container">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Day {linkID} | Trinidad Bible Relay</title>
+          <link
+            rel="canonical"
+            href={`http://relay.trueworshippers.org/watch/` + linkID}
+          />
+        </Helmet>
         <div className="row">
           <NavLink to="/">
             <button className="btn btn-sm btn-outline-primary">Back</button>
