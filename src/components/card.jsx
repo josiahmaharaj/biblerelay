@@ -16,7 +16,7 @@ class Card extends Component {
         <p className="card-text">
           {this.props.date}{" "}
           <span className="badge badge-danger">{this.props.live}</span>
-          {this.props.children}
+          <span className="badge badge-success">{this.props.record}</span>
         </p>
       </div>
     );

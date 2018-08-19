@@ -3,8 +3,8 @@ import React from "react";
 const About = () => {
   return (
     <div className="container px-5">
-      <h1>About</h1>
-      <p className="about">
+      <h1 data-aos="fade-up">About</h1>
+      <p className="about" data-aos="fade-up">
         <a
           href="https://trueworshippers.org"
           target="blank"
@@ -27,7 +27,7 @@ const About = () => {
         by Chapter…Verse by Verse.
       </p>
       <br />
-      <p className="about">
+      <p className="about" data-aos="fade-up">
         Come and participate in this God experience, as we read about our
         Creator, our Patriarchs and Matriarchs, Prophets and follow in the
         footsteps of our Lord and Saviour, Jesus Christ from the Gospels and the

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import YouTube from "react-youtube";
 import firebase from "./firestore";
+import Alert from "./alert";
 
 class Player extends Component {
   constructor(props) {
@@ -10,39 +11,52 @@ class Player extends Component {
       title: "Day",
       theme: "",
       description: "",
-      books: []
+      books: [],
+      day: []
     };
   }
   componentWillMount() {
     const db = firebase.firestore();
     const docRef = db.collection("day").doc(this.props.match.params.id);
-    docRef
-      .get()
-      .then(
-        function(doc) {
-          const fs_title = doc.exists
-            ? doc.get("title")
-            : console.log("No such document!");
-          const fs_theme = doc.exists
-            ? doc.get("theme")
-            : console.log("No such document!");
-          const fs_description = doc.exists
-            ? doc.get("description")
-            : console.log("No such document!");
-          const fs_books = doc.exists
-            ? doc.get("books")
-            : this.props.history.push("/");
-          this.setState({
-            title: fs_title,
-            theme: fs_theme,
-            description: fs_description,
-            books: fs_books
-          });
-        }.bind(this)
-      )
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
+    docRef.onSnapshot(
+      function(doc) {
+        const fs_title = doc.exists
+          ? doc.get("title")
+          : console.log("No such document!");
+        const fs_theme = doc.exists
+          ? doc.get("theme")
+          : console.log("No such document!");
+        const fs_description = doc.exists
+          ? doc.get("description")
+          : console.log("No such document!");
+        const fs_books = doc.exists
+          ? doc.get("books")
+          : this.props.history.push("/");
+        this.setState({
+          title: fs_title,
+          theme: fs_theme,
+          description: fs_description,
+          books: fs_books
+        });
+      }.bind(this)
+    );
+    // .catch(function(error) {
+    //   console.log("Error getting document:", error);
+    // });
+    const docRef2 = db.collection("day").doc("liveStatus");
+    docRef2.onSnapshot(
+      function(doc) {
+        const fs_liveStatus = doc.exists
+          ? doc.get("live")
+          : console.log("No such document!");
+        this.setState({
+          day: fs_liveStatus
+        });
+      }.bind(this)
+    );
+    // .catch(function(error) {
+    //   console.log("Error getting document:", error);
+    // });
   }
   render() {
     // YOUTUBE
@@ -67,7 +81,7 @@ class Player extends Component {
         rel: 0
       }
     };
-    // FIRESTORE
+
     return (
       <div className="container">
         <div className="row">
@@ -88,6 +102,7 @@ class Player extends Component {
             <YouTube videoId={streamID[linkID]} opts={opts} />
           </div>
         </div>
+        {this.state.day[linkID - 1] ? <Alert ytid={streamID[linkID]} /> : null}
         <div className="row jumbotron" data-aos="fade-up">
           <h3>Description</h3>
           <br />
@@ -97,9 +112,9 @@ class Player extends Component {
           <h3>Books Read</h3>
           {this.state.books.map(book => {
             return (
-              <div key={book.name} className="pt-1">
+              <div className="pt-1" key={book}>
                 <ul>
-                  <li>{book}</li>
+                  <li key={book}>{book}</li>
                 </ul>
               </div>
             );

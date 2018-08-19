@@ -28,7 +28,7 @@ const Social = () => {
           >
             <FacebookIcon size={32} round={true} />
           </FacebookShareButton>
-          <div className="align-center">
+          <div className="pl-2">
             <FacebookShareCount url={shareUrl} />
           </div>
         </div>

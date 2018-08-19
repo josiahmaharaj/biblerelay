@@ -14,7 +14,7 @@ import ErrorPage from "./components/error_page";
 import Footer from "./components/footer";
 import About from "./components/about";
 import Contact from "./components/contact";
-import Admin from "./components/admin/admin";
+import Admin from "./components/admin";
 const override = css`
   display: block;
   margin: 0 auto;
