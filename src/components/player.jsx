@@ -74,7 +74,7 @@ class Player extends Component {
       width: "540",
       playerVars: {
         autoplay: 1,
-        controls: 0,
+        controls: 1,
         modestbranding: 1,
         rel: 0
       }

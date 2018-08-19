@@ -1,30 +1,42 @@
 import React, { Component } from "react";
-import firebase from "firebase";
+import firebase from "./firestore";
 
 class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       liveStatus: [],
-      recordStatus: []
+      recordStatus: [],
+      newArray: [true, true, false, false, false, false, false]
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange(e) {
+
+  handleChange = e => {
+    const live = this.state.liveStatus;
+    e.target.value;
+    // update state
     this.setState({
-      [e.target.name]: e.target.value
+      live
     });
-  }
-  handleSubmit(e) {
+  };
+
+  handleSubmit = e => {
     e.preventDefault();
     const db = firebase.firestore();
-    const docRef0 = db.collection("day").doc("liveStatus");
-    const item = {
-      live: this.state.liveStatus
-    };
-    docRef0.set(item);
-  }
+    db.collection("day")
+      .doc("liveStatus")
+      .set({
+        live: this.state.liveStatus
+      })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  };
   componentDidMount() {
     const db = firebase.firestore();
     const docRef = db.collection("day").doc("liveStatus");
@@ -58,7 +70,25 @@ class Admin extends Component {
     return (
       <div className="container">
         <h1>Sets</h1>
-        <div className="row" />
+        <div className="row">
+          <form className="form-inline" onSubmit={e => this.handleSubmit(e)}>
+            <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+              Day 1
+            </label>
+            <select
+              className="custom-select my-1 mr-sm-2"
+              id="inlineFormCustomSelectPref"
+              value={this.state.liveStatus}
+              onChange={this.handleChange}
+            >
+              <option value="true">LIVE</option>
+              <option value="false">NOT LIVE</option>
+            </select>
+            <button className="btn btn-primary" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
         <h1>Views</h1>
         <div className="row">
           <div className="col-12 col-sm-6">
