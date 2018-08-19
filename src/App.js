@@ -51,7 +51,6 @@ class App extends Component {
             <Route path="/watch/:id" component={Player} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
-            <Route path="/admin" component={Admin} />
             <Route component={ErrorPage} />
           </Switch>
           <Footer />
