@@ -8,6 +8,22 @@ class Admin extends Component {
       liveStatus: [],
       recordStatus: []
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    const db = firebase.firestore();
+    const docRef0 = db.collection("day").doc("liveStatus");
+    const item = {
+      live: this.state.liveStatus
+    };
+    docRef0.set(item);
   }
   componentDidMount() {
     const db = firebase.firestore();
@@ -15,7 +31,6 @@ class Admin extends Component {
     docRef.onSnapshot(
       function(doc) {
         if (doc.exists) {
-          // console.log("Document data:", doc.data());
           const fs_lStatus = doc.get("live");
           this.setState({
             liveStatus: fs_lStatus
@@ -25,14 +40,10 @@ class Admin extends Component {
         }
       }.bind(this)
     );
-    //   .catch(function(error) {
-    //     console.log("Error getting document:", error);
-    //   });
     const docRef2 = db.collection("day").doc("recordStatus");
     docRef2.onSnapshot(
       function(doc) {
         if (doc.exists) {
-          // console.log("Document data:", doc.data());
           const fs_rStatus = doc.get("record");
           this.setState({
             recordStatus: fs_rStatus
@@ -42,17 +53,12 @@ class Admin extends Component {
         }
       }.bind(this)
     );
-    // .catch(function(error) {
-    //   console.log("Error getting document:", error);
-    // });
   }
   render() {
     return (
       <div className="container">
         <h1>Sets</h1>
-        <div className="row">
-          <h1>yest</h1>
-        </div>
+        <div className="row" />
         <h1>Views</h1>
         <div className="row">
           <div className="col-12 col-sm-6">
