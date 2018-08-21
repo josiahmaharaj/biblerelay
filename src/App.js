@@ -15,6 +15,7 @@ import Footer from "./components/footer";
 import About from "./components/about";
 import Contact from "./components/contact";
 import Admin from "./components/admin";
+import Login from "./components/login";
 const override = css`
   display: block;
   margin: 0 auto;
@@ -52,6 +53,7 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
             <Route path="/admin" component={Admin} />
+            <Route path="/login" component={Login} />
             <Route component={ErrorPage} />
           </Switch>
           <Footer />
