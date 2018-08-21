@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "./firestore";
+import Select from "react-select";
 
 class Admin extends Component {
   constructor(props) {
@@ -7,19 +8,20 @@ class Admin extends Component {
     this.state = {
       liveStatus: [],
       recordStatus: [],
-      newArray: [true, true, false, false, false, false, false]
+      FirebaseStateAlert: 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = e => {
-    const live = this.state.liveStatus;
-    e.target.value;
-    // update state
-    this.setState({
-      live
-    });
+  handleChange = optionsSelected => {
+    // console.log(optionsSelected.id);
+    // console.log(optionsSelected.value);
+    // console.log("State: " + this.state.liveStatus);
+    const liveState = this.state.liveStatus;
+    liveState.splice(optionsSelected.id, 1, !optionsSelected.value);
+    this.setState({ liveStatus: liveState });
+    // console.log("Splice: " + liveState);
   };
 
   handleSubmit = e => {
@@ -30,9 +32,12 @@ class Admin extends Component {
       .set({
         live: this.state.liveStatus
       })
-      .then(function() {
-        console.log("Document successfully written!");
-      })
+      .then(
+        function() {
+          // console.log("Document Written Successfully");
+          this.setState({ FirebaseStateAlert: 1 });
+        }.bind(this)
+      )
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
@@ -67,27 +72,69 @@ class Admin extends Component {
     );
   }
   render() {
+    const options = this.state.liveStatus.map((opt, index) => ({
+      id: index,
+      label: "Day " + (index + 1),
+      value: opt
+    }));
+    const a = options.findIndex(opt => opt.value === true);
+    function SuccessAlert() {
+      return (
+        <div className="alert alert-success" role="alert">
+          Document Write Successful
+        </div>
+      );
+    }
+    function WarningAlert() {
+      return (
+        <div className="alert alert-danger" role="alert">
+          Document Write Unsuccessful
+        </div>
+      );
+    }
+    function FirebaseAlert(props) {
+      const alert = props.alert;
+      if (alert === 1) {
+        return <SuccessAlert />;
+      }
+      if (alert === 2) {
+        return <WarningAlert />;
+      } else {
+        return <React.Fragment />;
+      }
+    }
+
     return (
       <div className="container">
         <h1>Sets</h1>
         <div className="row">
-          <form className="form-inline" onSubmit={e => this.handleSubmit(e)}>
-            <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-              Day 1
-            </label>
-            <select
-              className="custom-select my-1 mr-sm-2"
-              id="inlineFormCustomSelectPref"
-              value={this.state.liveStatus}
-              onChange={this.handleChange}
-            >
-              <option value="true">LIVE</option>
-              <option value="false">NOT LIVE</option>
-            </select>
-            <button className="btn btn-primary" type="submit">
-              Submit
-            </button>
-          </form>
+          <div className="col-12 col-sm-6">
+            <div className="row">
+              <form
+                className="form-inline"
+                onSubmit={e => this.handleSubmit(e)}
+              >
+                <div className="col-8">
+                  <Select
+                    options={options}
+                    value={options[a]}
+                    placeholder="Live Status"
+                    onChange={this.handleChange}
+                    setValue={opt => (opt.value = !opt.value)}
+                  />
+                </div>
+                <div className="col-4">
+                  <button className="btn btn-primary" type="submit">
+                    Push to Firebase
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="col-12 col-sm-6" />
+          <div className="col-12 mt-3">
+            <FirebaseAlert alert={this.state.FirebaseStateAlert} />
+          </div>
         </div>
         <h1>Views</h1>
         <div className="row">
