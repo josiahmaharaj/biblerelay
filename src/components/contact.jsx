@@ -6,12 +6,18 @@ import {
   faGlobe
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import Helmet from "react-helmet";
 
 const Contact = () => {
   return (
     <div className="container px-5">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Contact | Trinidad Bible Relay</title>
+        <link rel="canonical" href="http://relay.trueworshippers.org/contact" />
+      </Helmet>
       <div className="row">
-        <div className="col-12 col-sm-6">
+        <div className="col-12 col-sm-6" data-aos="fade-up">
           <h1>Contact Tzion Gate</h1>
           <p>
             For more information please feel free to contact us at Tzion Gate
@@ -39,7 +45,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="col-12 col-sm-6">
+        <div className="col-12 col-sm-6" data-aos="fade-up">
           <h1>Contact TWEC</h1>
           <p>For more information please feel free to contact us as TWEC</p>
           <div className="row">
@@ -88,7 +94,7 @@ const Contact = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-12 col-sm-6">
+        <div className="col-12 col-sm-6" data-aos="fade-up">
           <h1>Contact Light Tech Services Ltd.</h1>
           <p>For more information please contact Light Tech</p>
           <div className="row">
