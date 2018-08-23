@@ -48,6 +48,11 @@ a:hover {
   padding: 5px;
 }
 
+/* LOGIN */
+.login-form {
+  margin: 0 auto;
+}
+
 /* FOOTER */
 
 img.lighttech.img-thumbnail {

@@ -9,9 +9,12 @@ const config = {
   storageBucket: "trinidad-bible-relay.appspot.com",
   messagingSenderId: "70057916555"
 };
+
 firebase.initializeApp(config);
 const firestore = firebase.firestore();
 const settings = { /* your settings... */ timestampsInSnapshots: true };
+const auth = firebase.auth();
 firestore.settings(settings);
 
+export { auth };
 export default firebase;
