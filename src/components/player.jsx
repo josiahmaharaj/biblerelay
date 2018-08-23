@@ -41,9 +41,7 @@ class Player extends Component {
         });
       }.bind(this)
     );
-    // .catch(function(error) {
-    //   console.log("Error getting document:", error);
-    // });
+
     const docRef2 = db.collection("day").doc("liveStatus");
     docRef2.onSnapshot(
       function(doc) {

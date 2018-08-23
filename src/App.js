@@ -16,6 +16,12 @@ import ErrorPage from "./components/error_page";
 import Footer from "./components/footer";
 import About from "./components/about";
 import Contact from "./components/contact";
+
+import Admin from "./components/admin";
+import LoginContainer from "./components/Login/";
+import firebase from "./components/firestore";
+import PrivateRoute from "./components/privateroutes";
+
 ReactGA.initialize("UA-96334081-2", {
   debug: true,
   titleCase: false,
@@ -24,6 +30,7 @@ ReactGA.initialize("UA-96334081-2", {
   }
 });
 ReactGA.pageview(window.location.pathname + window.location.search);
+
 const override = css`
   display: block;
   margin: 0 auto;
@@ -32,7 +39,7 @@ const override = css`
 class App extends Component {
   constructor() {
     super();
-    this.state = { loading: true };
+    this.state = { loading: true, authenticated: false, user: null };
   }
   componentDidMount() {
     AOS.init({
@@ -40,8 +47,38 @@ class App extends Component {
       duration: 2000
     });
     this.setState({ loading: false });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false
+        });
+      }
+    });
   }
   render() {
+    const { authenticated, loading } = this.state;
+
+    if (loading) {
+      return (
+        <div className="sweet-loading container text-center">
+          <SyncLoader
+            className={override}
+            sizeUnit={"px"}
+            size={10}
+            color={"#dc3545"}
+            loading={this.state.loading}
+          />
+        </div>
+      );
+    }
     return (
       <React.Fragment>
         <Helmet>
@@ -52,20 +89,18 @@ class App extends Component {
         <Router>
           <React.Fragment>
             <Nav />
-            <div className="sweet-loading container text-center">
-              <SyncLoader
-                className={override}
-                sizeUnit={"px"}
-                size={10}
-                color={"#dc3545"}
-                loading={this.state.loading}
-              />
-            </div>
             <Switch>
               <Route exact path="/" component={Card_Layout} />
               <Route path="/watch/:id" component={Player} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
+              <Route path="/login" component={LoginContainer} />
+              <PrivateRoute
+                exact
+                path="/admin"
+                component={Admin}
+                authenticated={this.state.authenticated}
+              />
               <Route component={ErrorPage} />
             </Switch>
             <Footer />
