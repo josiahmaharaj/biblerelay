@@ -4,3 +4,5 @@ Project used to learn reactJS, showing youtube livestream videos for the 7 day f
 
 Website has an admin page with firebase authentication. The admin page controls whether or not the video thumbnails
 show "LIVE" or "RECORDED"
+
+[relay.trueworshippers.org](https://relay.trueworshippers.org)
